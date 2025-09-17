@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolphinarium Trans - Gallery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to an external CSS file -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="header-bg shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold logo-text">
+                <img src="https://www.assureshift.in/sites/default/files/images/content-images/secure-car-shifting-services.jpg" alt="Dolphinarium Trans Logo" class="w-10 h-10 rounded-full shadow-lg">
+                <span>Dolphinarium Trans</span>
+            </a>
+            <!-- Menu button always visible -->
+            <button id="menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Dropdown Menu -->
+        <div id="menu-dropdown" class="bg-white shadow-md w-full menu-dropdown">
+            <div class="flex flex-col container mx-auto px-6 space-y-2">
+                <a href="index.html#about" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">About Us</a>
+                <a href="index.html#services" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">Services</a>
+                <a href="index.html#track-shipment" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">Track Shipment</a>
+                <a href="index.html#top-shipments" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">Top Shipments</a>
+                <a href="index.html#special" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">Why Choose Us</a>
+                <a href="index.html#faq" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">FAQ</a>
+                <a href="index.html#contact" class="block py-2 text-gray-600 hover:text-blue-600 nav-link">Contact Us</a>
+                <a href= "#" class="block py-2 text-gray-600 hover:text-blue-600 nav-link active">Gallery</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- <main class="container mx-auto px-6 py-12">
+        <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-12 animate-on-scroll">Our Fleet in Action</h1>
+        
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> -->
+            <!-- Gallery items will be injected here by JavaScript -->
+        <!-- </div>
+    </main> -->
+
+    <!-- Lightbox Overlay -->
+    <!-- <div id="lightbox" class="lightbox-overlay">
+        <span id="close-btn" class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <span id="prev-btn" class="lightbox-nav hidden md:inline-block">&#10094;</span>
+            <img id="lightbox-image" class="lightbox-image" src="" alt="">
+            <span id="next-btn" class="lightbox-nav hidden md:inline-block">&#10095;</span>
+            <div id="lightbox-caption" class="lightbox-caption">
+                <p id="caption-title" class="caption-title"></p>
+                <p id="caption-description" class="caption-description"></p>
+            </div>
+        </div>
+    </div> -->
+    <h1>Our Transport Gallery</h1>
+  <div class="gallery-container">
+    <div class="gallery-item">
+      <img src="Images\image 1.jpeg" alt="Car Loading" onclick="openLightbox(0)">
+      <div class="caption">Safe Car Loading</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Images\image 2.jpeg" alt="Covered Carrier" onclick="openLightbox(1)">
+      <div class="caption">Covered Car Carrier</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Images\image 3.jpeg" alt="Bike Transport" onclick="openLightbox(2)">
+      <div class="caption">Bike Transport</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Images\image 4.jpeg" alt="Doorstep Pickup" onclick="openLightbox(3)">
+      <div class="caption">Doorstep Pickup</div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+  </div>
+
+
+    <!-- Footer - Copied from main page -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Dolphinarium Trans. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+    const images = [
+      "Images\image 1.jpeg",
+      "Images\image 2.jpeg",
+      "Images\image 3.jpeg",
+      "Images\image 4.jpeg"
+    ];
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = images[currentIndex];
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      document.getElementById("lightbox-img").src = images[currentIndex];
+    }
+
+    const menuButton = document.getElementById('menu-button');
+    const menuDropdown = document.getElementById('menu-dropdown');
+
+    // Toggle mobile menu visibility
+    menuButton.addEventListener('click', () => {
+        menuDropdown.classList.toggle('open');
+    });
+  </script>
+    <!-- <script>
+        const menuButton = document.getElementById('menu-button');
+        const menuDropdown = document.getElementById('menu-dropdown');
+        const galleryGrid = document.getElementById('gallery-grid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeBtn = document.getElementById('close-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const captionTitle = document.getElementById('caption-title');
+        const captionDescription = document.getElementById('caption-description');
+
+        let currentIndex = 0;
+
+        const images = [
+            {
+                url: 'https://placehold.co/1200x800/2f3640/FFFFFF?text=Transport+Truck',
+                title: 'Cross-Country Journey',
+                description: 'Our state-of-the-art carriers ensuring safe passage.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/4F46E5/FFFFFF?text=Loading+Process',
+                title: 'Precision Loading',
+                description: 'Expert team members carefully loading a vehicle.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/1a202c/667eea?text=Enclosed+Trailer',
+                title: 'Secure Enclosed Transport',
+                description: 'Protecting luxury cars from the elements.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/d1d5db/4b5563?text=Sunset+Drive',
+                title: 'Delivering Dreams',
+                description: 'A beautiful sunset as we deliver a customer\'s vehicle.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/34495e/FFFFFF?text=Open+Carrier',
+                title: 'Dependable Open Carrier',
+                description: 'The most efficient way to move multiple vehicles.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/805ad5/FFFFFF?text=Happy+Customer',
+                title: 'Handover Completed',
+                description: 'A satisfied client receiving their vehicle.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/f56565/FFFFFF?text=Driver+Team',
+                title: 'Our Dedicated Drivers',
+                description: 'The backbone of our operation, always on the road.'
+            },
+            {
+                url: 'https://placehold.co/1200x800/ecc94b/FFFFFF?text=Inspection+Process',
+                title: 'Pre-Shipment Inspection',
+                description: 'Thorough checks to document vehicle condition.'
+            }
+        ];
+
+        // Function to create and render gallery items
+        function renderGallery() {
+            galleryGrid.innerHTML = '';
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item animate-on-scroll';
+                item.dataset.index = index;
+                item.innerHTML = `
+                    <img src="${img.url}" alt="${img.title}" class="w-full h-auto">
+                    <div class="image-overlay">
+                        <p class="image-title">${img.title}</p>
+                        <p class="image-description">${img.description}</p>
+                    </div>
+                `;
+                galleryGrid.appendChild(item);
+            });
+        }
+
+        // Intersection Observer to handle fade-in effect on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        // Observe all gallery items
+        function observeGalleryItems() {
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Function to show the lightbox with the selected image
+        function showLightbox(index) {
+            currentIndex = index;
+            const img = images[currentIndex];
+            lightboxImage.src = img.url;
+            captionTitle.textContent = img.title;
+            captionDescription.textContent = img.description;
+            lightbox.style.display = 'flex';
+        }
+
+        // Event listeners for gallery grid
+        galleryGrid.addEventListener('click', (e) => {
+            const item = e.target.closest('.gallery-item');
+            if (item) {
+                const index = parseInt(item.dataset.index);
+                showLightbox(index);
+            }
+        });
+
+        // Event listeners for lightbox navigation
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showLightbox(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showLightbox(currentIndex);
+        });
+
+        // Handle keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                } else if (e.key === 'Escape') {
+                    closeBtn.click();
+                }
+            }
+        });
+
+        // Toggle mobile menu visibility
+        menuButton.addEventListener('click', () => {
+            menuDropdown.classList.toggle('open');
+        });
+
+        // Initial render of the gallery and observation
+        window.onload = () => {
+            renderGallery();
+            observeGalleryItems();
+        };
+    </script> -->
+</body>
+</html>
